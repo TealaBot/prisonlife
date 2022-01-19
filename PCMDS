@@ -848,7 +848,7 @@ cmds = {
 						wait(.1)
 						workspace.Remote.loadchar:InvokeServer(nil, team)
 					end
-					wait(.5)
+					wait(.25)
 					team = nteam
 					TKeyCard(v,v.Character.HumanoidRootPart.CFrame)
 				end)
