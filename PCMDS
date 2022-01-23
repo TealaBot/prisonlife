@@ -1012,18 +1012,17 @@ cmds = {
 game.Players.LocalPlayer.CharacterAdded:connect(function(c)
 	c:WaitForChild("ClientInputHandler").Disabled = true
 	local h = c:WaitForChild("Humanoid")
-	f1:Disconnect()
+	pcall(function()f1:Disconnect()
+	jr:Disconnect()end)
 	newClientFunction()
 	h.WalkSpeed = 50
 	h.JumpPower = 70
-	local jr = uis.JumpRequest:Connect(function(Jump)
+	jr = uis.JumpRequest:Connect(function()
 		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
 	end)
 	h.Changed:connect(function(ch)
 		if ch == "Health" then
 			if h.Health <= 0 then
-				print(cactive)
-				--jr:Disconnect()
 				local hrp = c:FindFirstChild("HumanoidRootPart")
 				if hrp then
 					if cactive == true then
@@ -1038,7 +1037,6 @@ game.Players.LocalPlayer.CharacterAdded:connect(function(c)
 						end
 					end
 				else
-					print("scoop")
 					pos = CFrame.new(913, 100, 2345)
 					cpos = workspace.CurrentCamera.CFrame
 				end
