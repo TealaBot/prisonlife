@@ -756,6 +756,7 @@ cmds = {
 			for i,v in pairs(getp) do
 				if v == plr then continue end
 				pcall(function()
+					if v.Character.Humanoid.SeatPart ~= nil then return end
 					if v == game.Players.LocalPlayer and plr ~= game.Players.LocalPlayer then
 						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
 						pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
