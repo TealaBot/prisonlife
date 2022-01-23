@@ -245,7 +245,7 @@ function newClientFunction()
 			end;
 		end;
 	end);
-	f2 = l__Humanoid__16.Changed:connect(function(p7)
+	l__Humanoid__16.Changed:connect(function(p7)
 		if p7 == "SeatPart" then
 			local l__SeatPart__35 = l__Humanoid__16.SeatPart;
 			cs.seated = true;
@@ -1012,6 +1012,7 @@ cmds = {
 game.Players.LocalPlayer.CharacterAdded:connect(function(c)
 	c:WaitForChild("ClientInputHandler").Disabled = true
 	local h = c:WaitForChild("Humanoid")
+	f1:Disconnect()
 	newClientFunction()
 	h.WalkSpeed = 50
 	h.JumpPower = 70
@@ -1021,8 +1022,6 @@ game.Players.LocalPlayer.CharacterAdded:connect(function(c)
 	h.Changed:connect(function(ch)
 		if ch == "Health" then
 			if h.Health <= 0 then
-				pcall(function()f1:Disconnect()
-					f2:Disconnect()end)
 				print(cactive)
 				--jr:Disconnect()
 				local hrp = c:FindFirstChild("HumanoidRootPart")
